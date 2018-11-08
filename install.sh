@@ -145,10 +145,10 @@ fi
 # fi
 
 # Check if we have enough disk space
-if [[ $(df -k --output=avail / | tail -n1) -lt 10485760 ]]; then
-  echo "This installation requires at least 10GB of free disk space.";
-  exit 1
-fi
+#if [[ $(df -k --output=avail / | tail -n1) -lt 10485760 ]]; then
+#  echo "This installation requires at least 10GB of free disk space.";
+#  exit 1
+#fi
 
 # Install tools for dig and systemctl
 echo "Preparing installation..."
@@ -266,8 +266,8 @@ if [[ "$I2PREADY" == "y" && "$TOR" != "y" && "$TOR" != "Y" && "$I2P" != "y" && "
         ;;
     esac
   done
-elif [[ "$I2PREADY" == 'n' && -z "$TOR" && -z "$I2P" ]]; then
-  read -erp "Would you like to use bulwarkd via TOR? [y/N] : " TOR
+#elif [[ "$I2PREADY" == 'n' && -z "$TOR" && -z "$I2P" ]]; then
+#  read -erp "Would you like to use bulwarkd via TOR? [y/N] : " TOR
 fi
 
 clear
@@ -457,13 +457,12 @@ else
 cat > "$USERHOME/.bulwark/bulwark.conf" << EOL
 ${INSTALLERUSED}
 daemon=1
-externalip=${EXTERNALIP}
 listen=1
 logtimestamps=1
 masternode=1
 masternodeaddr=${EXTERNALIP}
 masternodeprivkey=${KEY}
-maxconnections=256
+maxconnections=32
 rpcallowip=127.0.0.1
 rpcpassword=${RPCPASSWORD}
 rpcuser=${RPCUSER}
