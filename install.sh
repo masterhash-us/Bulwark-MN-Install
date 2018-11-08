@@ -67,11 +67,11 @@ case $key in
     shift
     ;;
     --tor)
-    TOR="y"
+    TOR="n"
     shift
     ;;
      --i2p)
-    I2P="y"
+    I2P="n"
     shift
     ;;
     -h|--help)
