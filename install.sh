@@ -456,6 +456,7 @@ else
 
 cat > "$USERHOME/.bulwark/bulwark.conf" << EOL
 ${INSTALLERUSED}
+externalip=${EXTERNALIP}
 daemon=1
 listen=1
 logtimestamps=1
