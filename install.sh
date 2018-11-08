@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Make installer interactive and select normal mode by default.
-INTERACTIVE="y"
+INTERACTIVE="n"
 ADVANCED="n"
 I2PREADY="n"
 
@@ -159,7 +159,7 @@ systemctl --version >/dev/null 2>&1 || { echo "systemd is required. Are you usin
 
 # Get our current IP
 if [ -z "$EXTERNALIP" ]; then
-EXTERNALIP=$(dig +short myip.opendns.com @resolver1.opendns.com)
+EXTERNALIP=$(dig +short -6 myip.opendns.com aaaa @resolver1.ipv6-sandbox.opendns.com)
 fi
 clear
 
@@ -456,7 +456,6 @@ else
 
 cat > "$USERHOME/.bulwark/bulwark.conf" << EOL
 ${INSTALLERUSED}
-bind=${BINDIP}:52543
 daemon=1
 externalip=${EXTERNALIP}
 listen=1
